@@ -1,0 +1,71 @@
+:root {
+--nav-color: rgb(0, 0, 0);
+}
+
+body {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+header {
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+nav > ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+
+}
+nav > ul > li {
+    margin: 10px;
+}
+li > a {
+    color: var(--nav-color);
+    font-weight: 600;
+    text-decoration: none;
+}
+#main-content {
+    text-align: center; 
+}
+.btns {
+    width: 80px;
+    height: 20px;
+}
+
+
+.active {
+    display: flex;
+    justify-content: center;
+    max-width: 1200px;
+}
+.inactive {
+    display: none;
+}
+.s {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+.skip:focus {
+    position: static;
+    width: auto;
+    height: auto;
+}
+.skip {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+.skip:focus {
+    position: static;
+    width: auto;
+    height: auto;
+}
