@@ -23,7 +23,7 @@
         <form class="basic-search">
             <label for="search-box ">Search</label>
             <input id="search-box" type="search" placeholder="Title / Author / Genre " aria-label="Search by book title ">
-            <button type="button" class="btns">search</button>
+            <button type="button" id="basic-search-btn" class="btns">search</button>
             <a class="link" href="#search-section" id="advanced-search-link">Advanced Search</a>
         </form>
     </header>
@@ -34,7 +34,7 @@
                 <fieldset>
                     <legend>genre and book details</legend>
                     <label for="genre">Genre:</label>
-                    <select id="genre" name="genre" autofocus>
+                    <select  id="genre" name="genre" autofocus>
                         <option value="any">any</option>
                         <option value="fiction">Fiction</option>
                         <option value="non-fiction">Non-Fiction</option>
@@ -46,29 +46,29 @@
                     </select>
                     
                     <label for="title">Title:</label>
-                    <input type="text" id="title" name="title">    
+                    <input class="filters" type="text" id="title" name="title">    
                     <label for="author">Author:</label>
-                    <input type="text" id="author" name="author">
+                    <input class="filters" type="text" id="author" name="author">
                     <label for="year">Year Of Publication</label>
-                    <input type="number" name="Year Of Publication" id="year">
+                    <input class="filters" type="number" name="Year Of Publication" id="year">
                     
                 </fieldset>
 
                 <fieldset>
-                    <legend>Book format and length</legend>
+                    <legend>Book format, rating and length</legend>
                     <label for="book-format">Book Format:</label>
-                    <select name="book-format" id="book-format">
+                    <select class="filters" name="book-format" id="book-format">
                         <option value="any">any</option>
                         <option value="HardCover">Hardcover</option>
                         <option value="Paperback">Paperback</option>
                         <option value="Ebook">Ebook</option>
                     </select>
-                    <label for="min-price">Min Review</label>
-                    <input type="number" name="min-price" id="min-price">
-                    <label for="min-price">Min Pages</label>
-                    <input type="number" name="min-price" id="min-price">
-                    <label for="max-price">Max Pages:</label>
-                    <input type="number" name="max-price" id="max-price">
+                    <label for="min-rating">Min Rating</label>
+                    <input class="range-filters" type="number" name="min-rating" id="min-rating">
+                    <label for="min-pages">Min Pages</label>
+                    <input class="range-filters" type="number" name="min-pages" id="min-pages">
+                    <label for="max-pages">Max Pages:</label>
+                    <input class="range-filters" type="number" name="max-pages" id="max-pages">
                 </fieldset>
                 <button type="submit" id="a-search" class="btns">Search</button>
             </form>
@@ -80,17 +80,15 @@
                  possimus natus doloremque facilis autem labore dicta, optio soluta, sint accusamus error.</p>
         </section>
         <section id="search-results" class="inactive">
-            <p>search resultsearch resultsearch resultsearch resultsearch resultsearch resultsearch result
-                search resultsearch resultsearch resultsearch resultsearch resultsearch resultsearch resultsearch result
-            </p>
+            
         </section>
         <section id="login" class="inactive">
             <p>loginloginloginloginloginloginloginloginloginloginloginloginloginlogin</p>
         </section>
-        <section id="reading-list" class="s">
+        <section id="reading-list" class="inactive">
             <p>readingreadingreadingreadingreadingreading</p>
         </section>
-        <section id="wish">
+        <section id="wish" class="inactive">
 
         </section>
 

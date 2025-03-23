@@ -3,7 +3,7 @@ class Searcher {
     constructor() {
       this.books = books;
     };
-  
+  // return all elements form given category
     searchByGenre(genre)  {           
             return this.books[genre.toLowerCase()]
     };
@@ -17,12 +17,13 @@ class Searcher {
     // Search in category based on filters obj 
     searchInCategory(genre, filters){ 
         return this.searchByGenre(genre).filter((book)=>{  
-            // Check if the filters match book object properties                   
-           return Object.entries(filters).every(([key, value])=>{
+            // Check if the all filters match  corresponding book properties.                  
+           return Object.entries(filters).every(([key, value])=>{//if filters empty evaluates to true          
                 return book[key]?.toString().toLowerCase().includes(value.toString().toLowerCase() );
             });
         });
     };
+    //filter by pageCount and Rating, default values in range obj. ensure that any book will be included.
     searchByRange(rangeFilters, array) {
         const rangeValues = Object.values(rangeFilters)
         const minPages = parseInt(rangeValues[0]);
@@ -55,8 +56,8 @@ class Searcher {
 
         if (filterGenre != 'any') {
             results = this.searchInCategory(filterGenre, filters);
-            results = this.searchByRange(rangeFilters, results);
-        } else {
+            results = this.searchByRange(rangeFilters, results);          
+        } else { //If no category selected search every category. searchInCategory returns array.
            for (const genre in this.books){
             let temp = this.searchInCategory(genre, filters)
             temp.forEach(item => results.push(item))
