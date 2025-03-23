@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Online Bookstore</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="favicon.ico">
     
 </head>
 <body>
@@ -38,11 +39,11 @@
                     <select  id="genre" name="genre" autofocus>
                         <option value="any">any</option>
                         <option value="fiction">Fiction</option>
-                        <option value="non-fiction">Non-Fiction</option>
+                        <option value="non fiction">Non-Fiction</option>
                         <option value="mystery">Mystery</option>
                         <option value="fantasy">Fantasy</option>
                         <option value="biography">Biography</option>
-                        <option value="science-fiction">Science Fiction</option>
+                        <option value="science fiction">Science Fiction</option>
                         <option value="romance">Romance</option>                        
                     </select>
                     
@@ -75,12 +76,34 @@
             </form>
 
         </section>
-        <section id="browse" class="inactive"></section>
-        <section id="search-results" class="inactive"></section>
-        <section id="login" class="inactive"></section>
-        <section id="reading-list" class="inactive"></section>
+        <section id="browse" class="inactive">
+            <h2>Browse Categories</h2>
+            <nav>
+                <ul>
+                    <li></li>
+                    <li><button class='browse-links' data-href="fiction">Fiction</button></li>
+                    <li><button class='browse-links' data-href="non fiction">Non-Fiction</button></li>
+                    <li><button class='browse-links' data-href="mystery">Mystery</button></li>
+                    <li><button class='browse-links' data-href="fantasy">Fantasy</button></li>
+                    <li><button class='browse-links' data-href="biography">Biography</button></li>
+                    <li><button class='browse-links' data-href="science fiction">Science Fiction</button></li>
+                    <li><button class='browse-links' data-href="romance">Romance</button></li>
+            </ul>
+            </nav>
+            <div id="browse-folder"></div>
+        </section>
+        <section id="search-results" class="inactive">
+            <h2>Search Result</h2>
+        </section>
+        <section id="login" class="inactive">
+            <h2>Login / Register</h2>
+        </section>
+        <section id="reading-list" class="inactive">
+            <h2>Reading List</h2>
+        </section>
         <section id="wish" class="inactive">
-
+            <h2>Wish List</h2>
+            
         </section>
 
 

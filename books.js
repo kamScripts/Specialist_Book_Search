@@ -226,6 +226,310 @@ let books = {
           description: "A collective biography of the pioneers who played significant roles in the creation of the digital age."
         }
       ],
+      fiction: [
+        {
+            title: "To Kill a Mockingbird",
+            author: "Harper Lee",
+            genre: "Fiction",
+            bookFormat: ["Hardcover", "Paperback", "Ebook"],
+            pageCount: 281,
+            publicationYear: 1960,
+            averageReview: 4.28,
+            numberOfReviews: 5000000,
+            description: "A gripping, heart-wrenching, and wholly remarkable tale of coming-of-age in a South poisoned by virulent prejudice."
+        },
+        {
+            title: "The Great Gatsby",
+            author: "F. Scott Fitzgerald",
+            genre: "Fiction",
+            bookFormat: ["Hardcover", "Paperback", "Ebook"],
+            pageCount: 180,
+            publicationYear: 1925,
+            averageReview: 3.93,
+            numberOfReviews: 4000000,
+            description: "A portrait of the Roaring Twenties and a critique of the American Dream."
+        },
+        {
+            title: "1984",
+            author: "George Orwell",
+            genre: "Fiction",
+            bookFormat: ["Hardcover", "Paperback", "Ebook"],
+            pageCount: 328,
+            publicationYear: 1949,
+            averageReview: 4.19,
+            numberOfReviews: 6000000,
+            description: "A dystopian novel set in a totalitarian society under constant surveillance."
+        },
+        {
+            title: "Pride and Prejudice",
+            author: "Jane Austen",
+            genre: "Fiction",
+            bookFormat: ["Hardcover", "Paperback", "Ebook"],
+            pageCount: 279,
+            publicationYear: 1813,
+            averageReview: 4.26,
+            numberOfReviews: 3500000,
+            description: "A romantic comedy about manners, marriage, and morality in 19th century England."
+        },
+        {
+            title: "The Catcher in the Rye",
+            author: "J.D. Salinger",
+            genre: "Fiction",
+            bookFormat: ["Hardcover", "Paperback", "Ebook"],
+            pageCount: 214,
+            publicationYear: 1951,
+            averageReview: 3.80,
+            numberOfReviews: 3000000,
+            description: "A story about teenage alienation and rebellion, told through the eyes of Holden Caulfield."
+        },
+        {
+            title: "Brave New World",
+            author: "Aldous Huxley",
+            genre: "Fiction",
+            bookFormat: ["Hardcover", "Paperback", "Ebook"],
+            pageCount: 268,
+            publicationYear: 1932,
+            averageReview: 3.99,
+            numberOfReviews: 5000000,
+            description: "A visionary dystopian novel exploring the dangers of technological and genetic control."
+        },
+        {
+            title: "The Book Thief",
+            author: "Markus Zusak",
+            genre: "Fiction",
+            bookFormat: ["Hardcover", "Paperback", "Ebook"],
+            pageCount: 552,
+            publicationYear: 2005,
+            averageReview: 4.37,
+            numberOfReviews: 6500000,
+            description: "The story of a young girl living in Nazi Germany, narrated by Death."
+        }
+    ],
+  'non fiction': [
+      {
+          title: "Sapiens: A Brief History of Humankind",
+          author: "Yuval Noah Harari",
+          genre: "Non-Fiction",
+          bookFormat: ["Hardcover", "Paperback", "Ebook"],
+          pageCount: 443,
+          publicationYear: 2011,
+          averageReview: 4.45,
+          numberOfReviews: 8000000,
+          description: "An exploration of the history of humanity, from the Stone Age to the 21st century."
+      },
+      {
+          title: "Educated",
+          author: "Tara Westover",
+          genre: "Non-Fiction",
+          bookFormat: ["Hardcover", "Paperback", "Ebook"],
+          pageCount: 334,
+          publicationYear: 2018,
+          averageReview: 4.47,
+          numberOfReviews: 1000000,
+          description: "A memoir about a woman who grows up in a strict and abusive household in rural Idaho but eventually escapes to learn about the wider world through education."
+      },
+      {
+          title: "Becoming",
+          author: "Michelle Obama",
+          genre: "Non-Fiction",
+          bookFormat: ["Hardcover", "Paperback", "Ebook"],
+          pageCount: 448,
+          publicationYear: 2018,
+          averageReview: 4.55,
+          numberOfReviews: 2000000,
+          description: "A deeply personal memoir by the former First Lady of the United States."
+      },
+      {
+          title: "The Immortal Life of Henrietta Lacks",
+          author: "Rebecca Skloot",
+          genre: "Non-Fiction",
+          bookFormat: ["Hardcover", "Paperback", "Ebook"],
+          pageCount: 381,
+          publicationYear: 2010,
+          averageReview: 4.06,
+          numberOfReviews: 450000,
+          description: "The story of a woman whose cells were used without her knowledge to create the first immortal human cell line."
+      },
+      {
+          title: "Outliers: The Story of Success",
+          author: "Malcolm Gladwell",
+          genre: "Non-Fiction",
+          bookFormat: ["Hardcover", "Paperback", "Ebook"],
+          pageCount: 309,
+          publicationYear: 2008,
+          averageReview: 4.16,
+          numberOfReviews: 600000,
+          description: "An examination of the factors that contribute to high levels of success."
+      },
+      {
+          title: "Born a Crime: Stories from a South African Childhood",
+          author: "Trevor Noah",
+          genre: "Non-Fiction",
+          bookFormat: ["Hardcover", "Paperback", "Ebook"],
+          pageCount: 304,
+          publicationYear: 2016,
+          averageReview: 4.46,
+          numberOfReviews: 400000,
+          description: "A memoir about growing up in apartheid-era South Africa as the mixed-race child of a black mother and a white father."
+      },
+      {
+          title: "The Wright Brothers",
+          author: "David McCullough",
+          genre: "Non-Fiction",
+          bookFormat: ["Hardcover", "Paperback", "Ebook"],
+          pageCount: 320,
+          publicationYear: 2015,
+          averageReview: 4.21,
+          numberOfReviews: 300000,
+          description: "The story of Wilbur and Orville Wright and their journey to invent the airplane."
+      }
+  ],
+  'science fiction': [
+      {
+          title: "Dune",
+          author: "Frank Herbert",
+          genre: "Science Fiction",
+          bookFormat: ["Hardcover", "Paperback", "Ebook"],
+          pageCount: 412,
+          publicationYear: 1965,
+          averageReview: 4.23,
+          numberOfReviews: 1000000,
+          description: "A science fiction epic set on the desert planet Arrakis, dealing with politics, religion, and ecology."
+      },
+      {
+          title: "The Martian",
+          author: "Andy Weir",
+          genre: "Science Fiction",
+          bookFormat: ["Hardcover", "Paperback", "Ebook"],
+          pageCount: 369,
+          publicationYear: 2014,
+          averageReview: 4.40,
+          numberOfReviews: 800000,
+          description: "A stranded astronaut must survive on Mars using his ingenuity and engineering skills."
+      },
+      {
+          title: "Ender's Game",
+          author: "Orson Scott Card",
+          genre: "Science Fiction",
+          bookFormat: ["Hardcover", "Paperback", "Ebook"],
+          pageCount: 324,
+          publicationYear: 1985,
+          averageReview: 4.30,
+          numberOfReviews: 900000,
+          description: "A young boy is trained to become a military leader in a war against an alien race."
+      },
+      {
+          title: "Foundation",
+          author: "Isaac Asimov",
+          genre: "Science Fiction",
+          bookFormat: ["Hardcover", "Paperback", "Ebook"],
+          pageCount: 255,
+          publicationYear: 1951,
+          averageReview: 4.15,
+          numberOfReviews: 700000,
+          description: "A mathematician develops a theory of predicting the future and works to save civilization from collapse."
+      },
+      {
+          title: "Neuromancer",
+          author: "William Gibson",
+          genre: "Science Fiction",
+          bookFormat: ["Hardcover", "Paperback", "Ebook"],
+          pageCount: 271,
+          publicationYear: 1984,
+          averageReview: 3.90,
+          numberOfReviews: 600000,
+          description: "A cyberpunk novel that explores artificial intelligence, virtual reality, and cyberspace."
+      },
+      {
+          title: "Snow Crash",
+          author: "Neal Stephenson",
+          genre: "Science Fiction",
+          bookFormat: ["Hardcover", "Paperback", "Ebook"],
+          pageCount: 480,
+          publicationYear: 1992,
+          averageReview: 4.03,
+          numberOfReviews: 500000,
+          description: "A fast-paced cyberpunk adventure set in a dystopian future dominated by virtual reality."
+      },
+      {
+          title: "The Left Hand of Darkness",
+          author: "Ursula K. Le Guin",
+          genre: "Science Fiction",
+          bookFormat: ["Hardcover", "Paperback", "Ebook"],
+          pageCount: 304,
+          publicationYear: 1969,
+          averageReview: 4.16,
+          numberOfReviews: 400000,
+          description: "A diplomat is sent to a planet where the inhabitants can change their gender, exploring themes of gender and society."
+      }
+  ],
+  romance: [
+      {
+          title: "Pride and Prejudice",
+          author: "Jane Austen",
+          genre: "Romance",
+          bookFormat: ["Hardcover", "Paperback", "Ebook"],
+          pageCount: 279,
+          publicationYear: 1813,
+          averageReview: 4.26,
+          numberOfReviews: 3500000,
+          description: "A romantic comedy about manners, marriage, and morality in 19th century England."
+      },
+      {
+          title: "Outlander",
+          author: "Diana Gabaldon",
+          genre: "Romance",
+          bookFormat: ["Hardcover", "Paperback", "Ebook"],
+          pageCount: 850,
+          publicationYear: 1991,
+          averageReview: 4.23,
+          numberOfReviews: 700000,
+          description: "A historical romance that blends time travel, adventure, and passionate love."
+      },
+      {
+          title: "The Notebook",
+          author: "Nicholas Sparks",
+          genre: "Romance",
+          bookFormat: ["Hardcover", "Paperback", "Ebook"],
+          pageCount: 214,
+          publicationYear: 1996,
+          averageReview: 4.12,
+          numberOfReviews: 800000,
+          description: "A timeless love story about two young lovers separated by war and class differences."
+      },
+      {
+          title: "Jane Eyre",
+          author: "Charlotte Brontë",
+          genre: "Romance",
+          bookFormat: ["Hardcover", "Paperback", "Ebook"],
+          pageCount: 500,
+          publicationYear: 1847,
+          averageReview: 4.12,
+          numberOfReviews: 1200000,
+          description: "A classic tale of love, mystery, and self-discovery."
+      },
+      {
+          title: "Me Before You",
+          author: "Jojo Moyes",
+          genre: "Romance",
+          bookFormat: ["Hardcover", "Paperback", "Ebook"],
+          pageCount: 369,
+          publicationYear: 2012,
+          averageReview: 4.26,
+          numberOfReviews: 1500000,
+          description: "A poignant romance between a young woman and a recently-paralyzed man."
+      },
+      {
+          title: "The Time Traveler's Wife",
+          author: "Audrey Niffenegger",
+          genre: "Romance",
+          bookFormat: ["Hardcover", "Paperback", "Ebook"],
+          pageCount: 546,
+          publicationYear: 2003,
+          averageReview: 3.97,
+          numberOfReviews: 900000,
+          description: "A love story about a man with a genetic disorder that causes him to time travel unpredictably."
+      }]  
       
 };
 

@@ -2,6 +2,8 @@ import Searcher from "./search.js"
 import { buildBookFromArray }from "./displayContent.js";
 const advancedSearchSection= document.getElementById('search-section');
 const browseSection = document.getElementById('browse');
+const browseLinks = document.querySelectorAll('.browse-links')
+const browseFolder = document.getElementById('browse-folder')
 const searchResultSection = document.getElementById('search-results');
 const loginSection = document.getElementById('login');
 const readingListSection = document.getElementById('reading-list');
@@ -39,15 +41,7 @@ const setActive = (open)=>{
 
 }
 
-//Add Event Listener to each link element
-for (const link of links) { 
-    link.addEventListener('click', (event) => {        
-        event.preventDefault();        
-// Make each section invisible before making selected visible.  
-        setActive(document.querySelector(`${link.getAttribute('href')}`))
 
-    });
-}
 const addToList = (button, list)=> {
     const article = button.closest('article')       
     button.disabled=true;
@@ -70,6 +64,7 @@ const addToList = (button, list)=> {
     }
    
 };
+// reset values of the search form.
 const resetAdvancedSearch = () => {
     filterCategory.value = 'any';
     for (const input of filtersInputs) {
@@ -84,6 +79,7 @@ const resetAdvancedSearch = () => {
         input.value = '';
     }
 };
+// add buttons to the search results.
 const selectResultBtn = () => {
     document.querySelectorAll('.wish-btn').forEach(button => {
         button.addEventListener('click', ()=>addToList(button, wishSection))
@@ -98,7 +94,7 @@ basicSearchBtn.addEventListener('click', (event) => {
     setActive(searchResultSection);    
     const value = basicSearchBox.value
     buildBookFromArray(searchEngine.globalSearch(value), searchResultSection);
-    selectResultBtn
+    selectResultBtn()
     basicSearchBox.value='';
 });
 
@@ -111,14 +107,29 @@ advancedSearchBtn.addEventListener('click', (event) => {
         [...filtersInputs].filter((filter) => filter.value != '' && filter.value != 'any').map(
         (filter) => [filter.name, filter.value]));
     const rangeFilters = Object.fromEntries(
-        [...rangeInputs].map((filter) => [filter.name, filter.value]));
-    console.log(searchEngine.advancedSearch(category, filters, rangeFilters))    
+        [...rangeInputs].map((filter) => [filter.name, filter.value]));  
     buildBookFromArray(searchEngine.advancedSearch(category, filters, rangeFilters), searchResultSection);
     selectResultBtn();
     resetAdvancedSearch();
 
-    
 });
+//Add Event Listener to each link element
+for (const link of links) { 
+    link.addEventListener('click', (event) => {        
+        event.preventDefault();        
+// Make each section invisible before making selected visible.  
+        setActive(document.querySelector(`${link.getAttribute('href')}`))
+
+    });
+}
+for (const link of browseLinks) {
+    link.addEventListener('click', (event)=>{        
+        event.preventDefault(); 
+        browseFolder.innerHTML = '';    
+        buildBookFromArray(searchEngine.advancedSearch(link.getAttribute('data-href'), {}, {}), browseFolder);
+        console.log(searchEngine.advancedSearch(link.getAttribute('data-href'), {}, {}), browseFolder)
+    })
+}
 
 
 
