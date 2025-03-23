@@ -1,6 +1,7 @@
 :root {
 --nav-color: rgb(0, 0, 0);
 --border-color: rgb(0, 0, 0);
+
 }
 
 body {
@@ -25,12 +26,39 @@ nav > ul {
 }
 nav > ul > li {
     margin: 10px;
+    position: relative;
 }
-   a {
+
+li > a::after {
+    content: '';  
+    position: absolute;  
+    bottom: -2px;  
+    left: 50%;  
+    width: 0;  
+    height: 2px;  
+    background-color: rgb(36, 36, 36);  
+    transition: width 0.5s ease, left 0.5s ease; /* Smooth transition for width and position */
+}
+
+li > a:hover::after {
+    width: 100%;  
+    left: 0; /* Expand from center outward */
+}
+a {
     color: var(--nav-color);
     font-weight: 600;
     text-decoration: none;
     
+}
+#advanced-search-link {
+    font-size: .9rem;
+    border: 1px solid black;
+    margin: 10px;
+    padding: 5px;
+}
+#advanced-search-link:hover {
+    outline: 1px solid rgb(26, 26, 25);
+    transition: outline 0.5s ease;
 }
 #main-content {
     display: flex;
@@ -41,7 +69,7 @@ nav > ul > li {
 }
 .btns {
     width: 80px;
-    height: 20px;    
+        
 
 }
 .active {
