@@ -21,7 +21,7 @@ let books = {
           publicationYear: 2000,
           averageReview: 4.56,
           numberOfReviews: 3983095,
-          description: "Harry competes in the dangerous Triwizard Tournament while facing the resurgence of the dark wizard Voldemort."
+          description: "Harry competes in the dangerous wizard Tournament while facing the resurgence of the dark wizard Voldemort."
         },
         {
           title: "The Last Wish",
@@ -76,7 +76,7 @@ let books = {
           publicationYear: 1996,
           averageReview: 4.45,
           numberOfReviews: 912345,
-          description: "Noble families vie for control of the Iron Throne in a land where seasons last for years and political intrigue reigns."
+          description: "Noble families fight for control of the Iron Throne in a land where seasons last for years and political intrigue reigns."
         },
         {
           title: "The Name of the Wind",

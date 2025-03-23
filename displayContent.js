@@ -1,15 +1,3 @@
-const addToList = (button, list)=> {
-    const article = button.closest('article')
-    console.log(article.id)
-}
-document.querySelectorAll('.wish-btn').forEach(button => {
-    button.addEventListener('click', ()=>addToList(button, 'list'))
-})
-
-const addToReadingList = (button) => {
-    const article = button.closest('article')
-    console.log(article.id)
-}
 
 function buildBookFromArray(array, parentElement){
     parentElement.innerHTML += array.map(
@@ -20,6 +8,7 @@ function buildBookFromArray(array, parentElement){
                 <article id="${title}" class="book">
                     <h3>${title}</h3>
                     <p>${author} - ${publicationYear}</p>
+                    <p>${genre} ${pageCount} Pages</p>
                     <p>Rating: ${averageReview} Reviews: ${numberOfReviews}</p>
                     <p>${bookFormat.join(', ')}</p>
                     <p>${description}</p>
@@ -32,4 +21,4 @@ function buildBookFromArray(array, parentElement){
     ).join(''); 
     };
 
-export default buildBookFromArray
+export { buildBookFromArray }

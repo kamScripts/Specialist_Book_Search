@@ -1,45 +1,54 @@
 :root {
 --nav-color: rgb(0, 0, 0);
+--border-color: rgb(0, 0, 0);
 }
 
 body {
     max-width: 1200px;
     margin: 0 auto;
-    position: relative;
+    padding: 20px;    
+    
+    
 }
 header {
-    text-align: center;
-    padding: 10px;
+    
     margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 nav > ul {
     display: flex;
     justify-content: center;
     list-style: none;
-
+    padding: 0; 
 }
 nav > ul > li {
     margin: 10px;
 }
-li > a {
+   a {
     color: var(--nav-color);
     font-weight: 600;
     text-decoration: none;
+    
 }
 #main-content {
-    text-align: center; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+
 }
 .btns {
     width: 80px;
-    height: 20px;
+    height: 20px;    
+
 }
-
-
 .active {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    max-width: 1200px;
+
 }
 .inactive {
     display: none;
@@ -48,17 +57,34 @@ fieldset {
     display: flex;
     flex-direction: column;
     align-items: start;
+    margin: 10px auto;
 }
 input[type=number] {
     width: 55px;
 }
-
-
-.skip:focus {
-    position: static;
-    width: auto;
-    height: auto;
+section {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto;
+    
 }
+article {  
+    max-width: 600px;
+    position: relative;
+    padding: 20px;
+    border-bottom: 2px solid ;
+    margin: 0 auto;
+}
+article > div {
+    position: absolute;
+    top: 50%;
+    right:20px;
+    transform: translateY(-50%);
+}
+
 .skip {
     position: absolute;
     left: -10000px;
@@ -71,4 +97,14 @@ input[type=number] {
     position: static;
     width: auto;
     height: auto;
+}
+@media (max-width: 500px) {
+   article {
+    position: static;
+    
+   } 
+   article > div {
+    position: static;
+    transform: none;  
+}
 }

@@ -16,7 +16,7 @@ class Searcher {
     };
     // Search in category based on filters obj 
     searchInCategory(genre, filters){ 
-        return this.searchByGenre(genre).filter((book)=>{  
+        return this.books[genre].filter((book)=>{  
             // Check if the all filters match  corresponding book properties.                  
            return Object.entries(filters).every(([key, value])=>{//if filters empty evaluates to true          
                 return book[key]?.toString().toLowerCase().includes(value.toString().toLowerCase() );
@@ -25,10 +25,11 @@ class Searcher {
     };
     //filter by pageCount and Rating, default values in range obj. ensure that any book will be included.
     searchByRange(rangeFilters, array) {
-        const rangeValues = Object.values(rangeFilters)
-        const minPages = parseInt(rangeValues[0]);
-        const maxPages = parseInt(rangeValues[1]);
-        const minRating = parseFloat(rangeValues[2]);
+        let {minPages, maxPages, minRating} = rangeFilters
+        minPages = parseInt(minPages) || 1;
+        maxPages = parseInt(maxPages) || 10000;
+        minRating = parseFloat(minRating) || 1;
+
 
         return array.filter((item) => item.pageCount >= minPages && item.pageCount <= maxPages &&
          item.averageReview >= minRating
@@ -53,13 +54,17 @@ class Searcher {
     
     advancedSearch(filterGenre, filters, rangeFilters){
         let results = []        
+        console.log(filterGenre, filters, rangeFilters)
+        if (filterGenre != 'any') {            
+            results = this.searchInCategory(filterGenre, filters);            
+            results = this.searchByRange(rangeFilters, results);  
+            
 
-        if (filterGenre != 'any') {
-            results = this.searchInCategory(filterGenre, filters);
-            results = this.searchByRange(rangeFilters, results);          
         } else { //If no category selected search every category. searchInCategory returns array.
+            
            for (const genre in this.books){
             let temp = this.searchInCategory(genre, filters)
+            temp = this.searchByRange(rangeFilters, temp);  
             temp.forEach(item => results.push(item))
            }
         }

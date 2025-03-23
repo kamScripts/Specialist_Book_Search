@@ -24,8 +24,9 @@
             <label for="search-box ">Search</label>
             <input id="search-box" type="search" placeholder="Title / Author / Genre " aria-label="Search by book title ">
             <button type="button" id="basic-search-btn" class="btns">search</button>
-            <a class="link" href="#search-section" id="advanced-search-link">Advanced Search</a>
+            
         </form>
+        <a class="link" href="#search-section" id="advanced-search-link">Advanced Search</a>
     </header>
 
     <main id="main-content">
@@ -50,44 +51,34 @@
                     <label for="author">Author:</label>
                     <input class="filters" type="text" id="author" name="author">
                     <label for="year">Year Of Publication</label>
-                    <input class="filters" type="number" name="Year Of Publication" id="year">
+                    <input class="filters" type="number" name="publicationYear" id="year">
                     
                 </fieldset>
 
                 <fieldset>
                     <legend>Book format, rating and length</legend>
                     <label for="book-format">Book Format:</label>
-                    <select class="filters" name="book-format" id="book-format">
+                    <select class="filters" name="bookFormat" id="book-format">
                         <option value="any">any</option>
                         <option value="HardCover">Hardcover</option>
                         <option value="Paperback">Paperback</option>
                         <option value="Ebook">Ebook</option>
                     </select>
                     <label for="min-rating">Min Rating</label>
-                    <input class="range-filters" type="number" name="min-rating" id="min-rating">
+                    <input class="range-filters" type="number" name="minRating" id="min-rating">
                     <label for="min-pages">Min Pages</label>
-                    <input class="range-filters" type="number" name="min-pages" id="min-pages">
+                    <input class="range-filters" type="number" name="minPages" id="min-pages">
                     <label for="max-pages">Max Pages:</label>
-                    <input class="range-filters" type="number" name="max-pages" id="max-pages">
+                    <input class="range-filters" type="number" name="maxPages" id="max-pages">
                 </fieldset>
                 <button type="submit" id="a-search" class="btns">Search</button>
             </form>
 
         </section>
-        <section id="browse" class="inactive">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                 Natus, quae? Recusandae expedita repellendus quaerat cum sapiente placeat debitis
-                 possimus natus doloremque facilis autem labore dicta, optio soluta, sint accusamus error.</p>
-        </section>
-        <section id="search-results" class="inactive">
-            
-        </section>
-        <section id="login" class="inactive">
-            <p>loginloginloginloginloginloginloginloginloginloginloginloginloginlogin</p>
-        </section>
-        <section id="reading-list" class="inactive">
-            <p>readingreadingreadingreadingreadingreading</p>
-        </section>
+        <section id="browse" class="inactive"></section>
+        <section id="search-results" class="inactive"></section>
+        <section id="login" class="inactive"></section>
+        <section id="reading-list" class="inactive"></section>
         <section id="wish" class="inactive">
 
         </section>
