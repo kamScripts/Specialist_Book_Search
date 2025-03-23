@@ -35,7 +35,7 @@
                     <legend>genre and book details</legend>
                     <label for="genre">Genre:</label>
                     <select id="genre" name="genre" autofocus>
-                        <option value="">--Select Genre--</option>
+                        <option value="any">any</option>
                         <option value="fiction">Fiction</option>
                         <option value="non-fiction">Non-Fiction</option>
                         <option value="mystery">Mystery</option>
@@ -49,13 +49,16 @@
                     <input type="text" id="title" name="title">    
                     <label for="author">Author:</label>
                     <input type="text" id="author" name="author">
-
+                    <label for="year">Year Of Publication</label>
+                    <input type="number" name="Year Of Publication" id="year">
+                    
                 </fieldset>
 
                 <fieldset>
                     <legend>Book format and length</legend>
                     <label for="book-format">Book Format:</label>
                     <select name="book-format" id="book-format">
+                        <option value="any">any</option>
                         <option value="HardCover">Hardcover</option>
                         <option value="Paperback">Paperback</option>
                         <option value="Ebook">Ebook</option>

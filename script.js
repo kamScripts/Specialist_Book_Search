@@ -8,8 +8,18 @@ const links = document.getElementsByClassName('link')
 
 const searchEngine = new Searcher()
 
-console.log(searchEngine.searchByGenre('fantasy'))
-console.log(searchEngine.globalSearch("sapkowski"));
+const filters = {
+    title: "Harry Potter",
+    author: "J.K. Rowling",
+    publicationYear: 2000,
+
+}
+
+
+
+console.log(searchEngine.globalSearch("Harry"));
+console.log(searchEngine.searchInCategory('fantasy', filters))
+
 
 
 //Add Event Listener to each link element
