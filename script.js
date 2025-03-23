@@ -1,4 +1,3 @@
-
 import Searcher from "./search.js"
 
 const advancedSearchLink = document.getElementById('advanced-search-link');
@@ -8,17 +7,19 @@ const links = document.getElementsByClassName('link')
 
 const searchEngine = new Searcher()
 
-const filters = {
-    title: "Harry Potter",
-    author: "J.K. Rowling",
-    publicationYear: 2000,
+const category = 'any'
 
-}
-
+const filters = {};
+const rangeFilters = {
+    minPages: 1,
+    maxPages: 10000,
+    minRating: 1
+};
 
 
 console.log(searchEngine.globalSearch("Harry"));
 console.log(searchEngine.searchInCategory('fantasy', filters))
+console.log(searchEngine.advancedSearch(category, filters, rangeFilters))
 
 
 
