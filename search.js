@@ -3,8 +3,17 @@ class Searcher {
     constructor() {
       this.books = books;
     };
+    getBook(bookTitle) {   
+        let book = {}     
+        Object.keys(this.books).forEach((genre)=>{            
+            let match = this.books[genre].find((book) => book.title === bookTitle);
+            if (match) {book = match}
+        })
+        return book
+        
+    }
   // return all elements form given category
-    searchByGenre(genre)  {           
+    searchByGenre(genre) {           
             return this.books[genre.toLowerCase()]
     };
       

@@ -29,7 +29,7 @@ nav > ul > li {
     position: relative;
 }
 
-li > a::after {
+.menu::after {
     content: '';  
     position: absolute;  
     bottom: -2px;  
@@ -40,7 +40,7 @@ li > a::after {
     transition: width 0.5s ease, left 0.5s ease; /* Smooth transition for width and position */
 }
 
-li > a:hover::after {
+.menu:hover::after {
     width: 100%;  
     left: 0; /* Expand from center outward */
 }

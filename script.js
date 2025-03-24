@@ -1,11 +1,11 @@
 import Searcher from "./search.js"
+import Logger from "./login_register.js";
 import { buildBookFromArray }from "./displayContent.js";
+
 const advancedSearchSection= document.getElementById('search-section');
-const browseSection = document.getElementById('browse');
 const browseLinks = document.querySelectorAll('.browse-links')
 const browseFolder = document.getElementById('browse-folder')
 const searchResultSection = document.getElementById('search-results');
-const loginSection = document.getElementById('login');
 const readingListSection = document.getElementById('reading-list');
 const wishSection = document.getElementById('wish');
 // links opens given section based on the href value.
@@ -18,10 +18,13 @@ const filtersInputs = document.querySelectorAll('.filters');
 const rangeInputs = document.querySelectorAll('.range-filters')
 const advancedSearchBtn = document.querySelector('#a-search')
 
+const registerForm = document.querySelector('#registerForm');
+const loginForm = document.querySelector('#loginForm');
+
 
 
 const searchEngine = new Searcher()
-
+const logger = new Logger(wishSection, readingListSection);
 
 
 
@@ -62,6 +65,7 @@ const addToList = (button, list)=> {
     if (list === readingListSection) {
         readingListSection.appendChild(articleClone)
     }
+    console.log(searchEngine.getBook(article.id), article.id)
    
 };
 // reset values of the search form.
@@ -102,12 +106,13 @@ advancedSearchBtn.addEventListener('click', (event) => {
     event.preventDefault();
     searchResultSection.innerHTML = ''
     setActive(searchResultSection);
+    // get form inputs, genre-string, text val. filters obj, numeric val. rangeFilters obj.
     const category = filterCategory.value
     const filters = Object.fromEntries(
-        [...filtersInputs].filter((filter) => filter.value != '' && filter.value != 'any').map(
+        [...filtersInputs].filter((filter) => filter.value.trim() != '' && filter.value != 'any').map(
         (filter) => [filter.name, filter.value]));
     const rangeFilters = Object.fromEntries(
-        [...rangeInputs].map((filter) => [filter.name, filter.value]));  
+        [...rangeInputs].map((filter) => [filter.name, filter.value.trim()]));  
     buildBookFromArray(searchEngine.advancedSearch(category, filters, rangeFilters), searchResultSection);
     selectResultBtn();
     resetAdvancedSearch();
@@ -122,6 +127,7 @@ for (const link of links) {
 
     });
 }
+//build browse section
 for (const link of browseLinks) {
     link.addEventListener('click', (event)=>{        
         event.preventDefault(); 
@@ -131,6 +137,19 @@ for (const link of browseLinks) {
     })
 }
 
+registerForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const username = event.target.username.value;
+    const password = event.target.password.value;
+    logger.registerUser(username, password);
+});
+
+loginForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const username = event.target.username.value;
+    const password = event.target.password.value;
+    logger.loginUser(username, password);
+});
 
 
 

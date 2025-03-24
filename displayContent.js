@@ -20,5 +20,10 @@ function buildBookFromArray(array, parentElement){
             `}
     ).join(''); 
     };
+function buildList(array, parentElement){
+    array.forEach((element) => {
+        parentElement.appendChild(element);
+    });
+};
 
-export { buildBookFromArray }
+export { buildBookFromArray, buildList}

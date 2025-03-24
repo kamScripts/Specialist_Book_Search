@@ -15,10 +15,10 @@
         <h1>Online BookShelf</h1>
         <nav>            
             <ul>
-                <li><a class="link" href="#login">login/register</a></li>
-                <li><a class="link" href="#reading-list">Reading List</a></li>
-                <li><a class="link" href="#wish">Wish List</a></li>
-                <li><a class="link" href="#browse" id="browse-link">Browse Books</a></li>                
+                <li><a class="menu link" href="#login">login/register</a></li>
+                <li><a class="menu link" href="#reading-list">Reading List</a></li>
+                <li><a class="menu link" href="#wish">Wish List</a></li>
+                <li><a class="menu link" href="#browse" id="browse-link">Browse Books</a></li>                
             </ul>
         </nav>
         <form class="basic-search">
@@ -97,6 +97,19 @@
         </section>
         <section id="login" class="inactive">
             <h2>Login / Register</h2>
+            
+            <h3>Login</h3>
+            <form id="loginForm">
+                <input type="text" name="username" placeholder="Username" required />
+                <input type="password" name="password" placeholder="Password" required />
+                <button type="submit">Login</button>
+            </form>
+            <h3>Register</h3>
+            <form id="registerForm">
+                <input type="text" name="username" placeholder="Username" required />
+                <input type="password" name="password" placeholder="Password" required />
+                <button type="submit">Register</button>
+            </form>
         </section>
         <section id="reading-list" class="inactive">
             <h2>Reading List</h2>
