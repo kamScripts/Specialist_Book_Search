@@ -24,8 +24,13 @@ const loginForm = document.querySelector('#loginForm');
 
 
 const searchEngine = new Searcher()
-const logger = new Logger(wishSection, readingListSection);
+const logger = new Logger();
 
+const currentUser = localStorage.getItem('currentUser');
+if (currentUser) {
+    console.log(currentUser)
+    logger.loadUserLists(currentUser)
+}
 
 
 // SWitch visibility of HTML Sections
@@ -48,24 +53,15 @@ const setActive = (open)=>{
 const addToList = (button, list)=> {
     const article = button.closest('article')       
     button.disabled=true;
-    //clone article and remove btns, then add the remove btn.
-    const articleClone = article.cloneNode(true);
-    const div = articleClone.querySelector('.btns-container')
-    div.innerHTML = '';
-    const removeButton = document.createElement('button');
-    removeButton.classList = 'remove-btn'
-    removeButton.innerText = "Remove from List";
-    removeButton.addEventListener('click', () => {
-        articleClone.remove();  
-    });
-    div.appendChild(removeButton)
+    
     if (list === wishSection) {
-        wishSection.appendChild(articleClone)
+        
+        logger.addBookToUserList('wishList', searchEngine.getBook(article.id));
     }
-    if (list === readingListSection) {
-        readingListSection.appendChild(articleClone)
+    if (list === readingListSection) {        
+        logger.addBookToUserList('readingList', searchEngine.getBook(article.id))
     }
-    console.log(searchEngine.getBook(article.id), article.id)
+    
    
 };
 // reset values of the search form.
