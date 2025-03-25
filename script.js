@@ -2,7 +2,7 @@ import Searcher from "./search.js"
 import Logger from "./login_register.js";
 import { buildBookFromArray }from "./displayContent.js";
 
-const advancedSearchSection= document.getElementById('search-section');
+
 const browseLinks = document.querySelectorAll('.browse-links')
 const browseFolder = document.getElementById('browse-folder')
 const searchResultSection = document.getElementById('search-results');
@@ -10,13 +10,10 @@ const readingListSection = document.getElementById('reading-list');
 const wishSection = document.getElementById('wish');
 // links opens given section based on the href value.
 const links = document.getElementsByClassName('link');
+const basicSearchForm = document.querySelector('.basic-search');
 const basicSearchBox = document.getElementById('search-box');
 const basicSearchBtn = document.getElementById('basic-search-btn');
-
-const filterCategory = document.getElementById('genre');
-const filtersInputs = document.querySelectorAll('.filters');
-const rangeInputs = document.querySelectorAll('.range-filters')
-const advancedSearchBtn = document.querySelector('#a-search')
+const searchForm = document.getElementById('advanced-search');
 
 const registerForm = document.querySelector('#registerForm');
 const loginForm = document.querySelector('#loginForm');
@@ -50,7 +47,10 @@ const showSection = (section) => {
 const hideAllSections = () => {
     searchResultSection.className = 'inactive'
     for (const link of links) {
-        document.querySelector(`${link.getAttribute('href')}`).className = 'inactive'
+        document.querySelector(`${link.getAttribute('href')}`).className = 'inactive';
+        if (link.getAttribute('href') == '#search-section'){
+            basicSearchForm.display='None'
+        }
     }   
 }
 const setActive = (open)=>{
@@ -74,21 +74,7 @@ const addToList = (button, list)=> {
     
    
 };
-// reset values of the search form.
-const resetAdvancedSearch = () => {
-    filterCategory.value = 'any';
-    for (const input of filtersInputs) {
-        if (input.name === 'bookFormat') {
-            input.value = 'any';
-        } else {
-            input.value = '';
-        }
-    }
 
-    for (const input of rangeInputs) {
-        input.value = '';
-    }
-};
 // add buttons to the search results.
 const selectResultBtn = () => {
     document.querySelectorAll('.wish-btn').forEach(button => {
@@ -108,20 +94,27 @@ basicSearchBtn.addEventListener('click', (event) => {
     basicSearchBox.value='';
 });
 
-advancedSearchBtn.addEventListener('click', (event) => {    
+searchForm.addEventListener('submit', (event) => {    
     event.preventDefault();
     searchResultSection.innerHTML = ''
     setActive(searchResultSection);
-    // get form inputs, genre-string, text val. filters obj, numeric val. rangeFilters obj.
-    const category = filterCategory.value
+// Access form data and extract inputs.
+    const formData = new FormData(searchForm);
+    const category = formData.get('genre')
     const filters = Object.fromEntries(
-        [...filtersInputs].filter((filter) => filter.value.trim() != '' && filter.value != 'any').map(
-        (filter) => [filter.name, filter.value]));
+        [...formData.entries()].filter(([key, value]) => 
+        value.trim() !== '' && value !== 'any' && key !== 'genre' &&
+        !key.startsWith('min') && !key.startsWith('max')
+        )        
+    );
     const rangeFilters = Object.fromEntries(
-        [...rangeInputs].map((filter) => [filter.name, filter.value.trim()]));  
-    buildBookFromArray(searchEngine.advancedSearch(category, filters, rangeFilters), searchResultSection);
+        ['minRating', 'minPages', 'maxPages'].map((key) => [key, formData.get(key) || ''])
+    );
+// search books based on filters, display results and reset html form.
+    const searchResults = searchEngine.advancedSearch(category, filters, rangeFilters);
+    buildBookFromArray(searchResults, searchResultSection);
     selectResultBtn();
-    resetAdvancedSearch();
+    searchForm.reset()
 });
 //Add Event Listener to each link element
 for (const link of links) { 
