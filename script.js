@@ -10,6 +10,7 @@ const readingListSection = document.getElementById('reading-list');
 const wishSection = document.getElementById('wish');
 // links opens given section based on the href value.
 const links = document.getElementsByClassName('link');
+const aSearchBtn = document.getElementById('advanced-search-link')
 const basicSearchForm = document.querySelector('.basic-search');
 const basicSearchBox = document.getElementById('search-box');
 const basicSearchBtn = document.getElementById('basic-search-btn');
@@ -43,20 +44,19 @@ if (currentUser) {
 // SWitch visibility of HTML Sections
 const showSection = (section) => {
     section.className = 'active';
+    basicSearchForm.className = 'active'   
+     
 }
 const hideAllSections = () => {
     searchResultSection.className = 'inactive'
     for (const link of links) {
         document.querySelector(`${link.getAttribute('href')}`).className = 'inactive';
-        if (link.getAttribute('href') == '#search-section'){
-            basicSearchForm.display='None'
-        }
+
     }   
 }
 const setActive = (open)=>{
     hideAllSections();
-    showSection(open)       
-
+    showSection(open);
 }
 
 
@@ -115,13 +115,17 @@ searchForm.addEventListener('submit', (event) => {
     buildBookFromArray(searchResults, searchResultSection);
     selectResultBtn();
     searchForm.reset()
+
 });
 //Add Event Listener to each link element
 for (const link of links) { 
     link.addEventListener('click', (event) => {        
         event.preventDefault();        
-// Make each section invisible before making selected visible.  
+// Make each section invisible before making selected visible.        
         setActive(document.querySelector(`${link.getAttribute('href')}`))
+        if (link.getAttribute('href')==='#search-section') {
+            basicSearchForm.className = 'inactive'
+        }
 
     });
 }

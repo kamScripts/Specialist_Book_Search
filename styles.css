@@ -8,17 +8,18 @@
 body {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 20px;    
+    padding: 10px;    
     
     
 }
 header {
-    position: relative;
-    margin-bottom: 20px;
+    position: relative;    
     display: flex;
     flex-direction: column;
     align-items: center;
+
 }
+
 #user-info {
     position: absolute;
     justify-self: flex-start;
@@ -36,7 +37,7 @@ nav > ul {
     padding: 0; 
 }
 nav > ul > li {
-    margin: 10px;
+    margin-right: 15px;
     position: relative;
 }
 
@@ -92,7 +93,7 @@ form {
     border: 2px solid #ccc;
     border-radius: 8px;
     background-color: #f9f9f9;    
-    margin: 10px auto;
+    margin: 0 auto;
 }
 button[type=submit] {
     align-self: center;
@@ -113,12 +114,14 @@ label {
     margin-bottom: 1rem;
 }
 input, select {
-    padding: 0.5rem;
+    
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 1rem;
+
 }
 button {
+    margin: 5px;
     padding: .2rem .4rem;
     font-size: 1rem;
     max-height: 2.5rem;
@@ -144,12 +147,14 @@ section {
     margin: 0 auto;
     
 }
-article {  
+article { 
+    width:100%; 
     max-width: 600px;
     position: relative;
     padding: 20px;
     border-bottom: 2px solid ;
     margin: 0 auto;
+
 }
 article > div {
     position: absolute;
@@ -171,8 +176,9 @@ article > div {
     width: auto;
     height: auto;
 }
-@media (max-width: 500px) {
+@media (max-width: 700px) {
    article {
+    width: 80%;
     position: static;
     
    } 
