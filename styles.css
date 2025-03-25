@@ -19,7 +19,7 @@ header {
     flex-direction: column;
     align-items: center;
 }
-#userinfo {
+#user-info {
     position: absolute;
     justify-self: flex-start;
     align-self: flex-end;
@@ -99,6 +99,11 @@ fieldset {
 }
 input[type=number] {
     width: 55px;
+}
+.login-register {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 section {
     display: flex;

@@ -33,6 +33,10 @@ class Logger {
             alert('Invalid username or password.');
         }
     }
+    logout(){
+        localStorage.removeItem('currentUser');
+        location.reload();
+    }
     loadUserLists(username) {
         const users = JSON.parse(localStorage.getItem('users')) || {};
         const user = users[username];
@@ -80,7 +84,7 @@ class Logger {
         user[list].push(item);
         localStorage.setItem('users', JSON.stringify(users));
         this.loadUserLists(currentUser);
-
+// Add method to check if book is on the list already
     }
 
 };

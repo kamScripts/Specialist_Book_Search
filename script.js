@@ -21,6 +21,8 @@ const advancedSearchBtn = document.querySelector('#a-search')
 const registerForm = document.querySelector('#registerForm');
 const loginForm = document.querySelector('#loginForm');
 
+const userInfo = document.getElementById('user-info');
+const userSpan = document.getElementById('user-name');
 
 
 const searchEngine = new Searcher()
@@ -29,7 +31,15 @@ const logger = new Logger();
 const currentUser = localStorage.getItem('currentUser');
 if (currentUser) {
     console.log(currentUser)
-    logger.loadUserLists(currentUser)
+    logger.loadUserLists(currentUser);
+    userSpan.textContent = currentUser + ' (Log out)';
+    userInfo.classList.remove('link')
+
+    userInfo.addEventListener('click', (event) => {
+        event.preventDefault();
+        logger.logout()
+  })
+    
 }
 
 
@@ -112,7 +122,6 @@ advancedSearchBtn.addEventListener('click', (event) => {
     buildBookFromArray(searchEngine.advancedSearch(category, filters, rangeFilters), searchResultSection);
     selectResultBtn();
     resetAdvancedSearch();
-
 });
 //Add Event Listener to each link element
 for (const link of links) { 
@@ -138,6 +147,8 @@ registerForm.addEventListener('submit', (event) => {
     const username = event.target.username.value;
     const password = event.target.password.value;
     logger.registerUser(username, password);
+    event.target.username.value = '';
+    event.target.password.value = '';
 });
 
 loginForm.addEventListener('submit', (event) => {
@@ -145,6 +156,9 @@ loginForm.addEventListener('submit', (event) => {
     const username = event.target.username.value;
     const password = event.target.password.value;
     logger.loginUser(username, password);
+    event.target.username.value = '';
+    event.target.password.value = '';
+    location.reload()
 });
 
 
