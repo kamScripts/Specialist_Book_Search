@@ -6,7 +6,7 @@ class Logger {
     constructor() {
               
         this.wishSection = wishSection;
-        this.readingList = readingListSection
+        this.readingSection = readingListSection
     }
 
     registerUser(username, password) {
@@ -39,21 +39,34 @@ class Logger {
         if (user.wishList.length >= 1) {
             this.wishSection.innerHTML = '';
             buildList(user.wishList, this.wishSection);
-            document.querySelectorAll('.remove-btn').forEach(button => {
-                const article = button.closest('article')
-                button.addEventListener('click', ()=>{article.remove()})
-        }
-    );
+            this.addRemoveBtns('wishList');
+
     }
         if (user.readingList.length >= 1){
-            this.readingList.innerHTML = '';
-        buildList(user.readingList, this.readingList);
+            this.readingSection.innerHTML = '';
+        buildList(user.readingList, this.readingSection);
+        this.addRemoveBtns('readingList')
+    };
+    }
+    addRemoveBtns(listName){
         document.querySelectorAll('.remove-btn').forEach(button => {
             const article = button.closest('article')
-            button.addEventListener('click', ()=>{article.remove()})
+            button.addEventListener('click', ()=>{                
+                this.removeFromList(listName, article.id)
+                article.remove()
+                
+            })
     }
 );
-    };
+    }
+    removeFromList(listName, item) {
+        const users = JSON.parse(localStorage.getItem('users')) || {};
+        const currentUser = localStorage.getItem('currentUser');
+        const user = users[currentUser]
+        console.log(item ,user[listName])
+        user[listName] = user[listName].filter((book) => {
+            return book.title != item})
+        localStorage.setItem('users', JSON.stringify(users))
     }
     addBookToUserList(list, item) {
         const currentUser = localStorage.getItem('currentUser');        

@@ -129,7 +129,7 @@ for (const link of browseLinks) {
         event.preventDefault(); 
         browseFolder.innerHTML = '';    
         buildBookFromArray(searchEngine.advancedSearch(link.getAttribute('data-href'), {}, {}), browseFolder);
-        console.log(searchEngine.advancedSearch(link.getAttribute('data-href'), {}, {}), browseFolder)
+        selectResultBtn()
     })
 }
 
