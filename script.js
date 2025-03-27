@@ -22,7 +22,7 @@ const userInfo = document.getElementById('user-info');
 const userSpan = document.getElementById('user-name');
 
 const searchEngine = new Searcher(books)
-const logger = new Logger();
+const logger = new Logger(wishSection, readingListSection);
 
 const currentUser = localStorage.getItem('currentUser');
 console.log(currentUser)
@@ -55,9 +55,6 @@ const hideAllSections = () => {
 const setActive = (open)=>{
     hideAllSections();
     showSection(open);
-}
-const disableBtnsIfOnList = () => {
-
 }
 
 const addToList = (button, list)=> {

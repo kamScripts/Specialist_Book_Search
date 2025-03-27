@@ -1,12 +1,11 @@
 import { buildList } from "./displayContent.js";
-const readingListSection = document.getElementById('reading-list');
-const wishSection = document.getElementById('wish');
+
 class Logger {
 
-    constructor() {
+    constructor(wish,reading) {
               
-        this.wishSection = wishSection;
-        this.readingSection = readingListSection
+        this.wishSection = wish;
+        this.readingSection = reading
     }
 
     registerUser(username, password) {

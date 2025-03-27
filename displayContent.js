@@ -22,7 +22,6 @@ function buildBookFromArray(array, parentElement){
     };
     
 function buildList(array, parentElement){ 
-    console.log(array)
     if (array.length >= 1){
         parentElement.innerHTML += array.map(
             ({ title, author, genre, bookFormat, pageCount, publicationYear,
