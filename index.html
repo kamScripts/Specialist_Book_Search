@@ -9,7 +9,7 @@
     
 </head>
 <body>
-    <a href="#search-box" class="skip">Skip to main content</a>
+    <a href="#main" class="skip">Skip to main content</a>
 
     <header>
         <h1>Online BookShelf</h1>
@@ -22,14 +22,12 @@
                 <li><a class="menu link" href="#browse" >Browse Books</a></li>                
             </ul>
         </nav>
-        <form class="basic-search">
-            <label for="search-box ">
+        <form id="basic-search">
+            <label>
                 Search:
-                <input name="search-box" id="search-box" type="search" placeholder="Title / Author / Genre " >
-            </label>
-            
-            <button type="button" id="basic-search-btn" class="btns">search</button>
-            
+                <input name="searchBox" id="search-box" type="search" placeholder="Title / Author / Genre " >
+            </label>           
+            <button type="submit" id="basic-search-btn" class="btns">search</button>            
         </form>
         <button><a class="link" href="#search-section" id="advanced-search-link">Advanced Search</a></button>
     </header>
@@ -127,14 +125,14 @@
             
             <h3>Login</h3>
             <form id="loginForm" class="login-register">
-                <input type="text" name="username" placeholder="Username" required />
-                <input type="password" name="password" placeholder="Password" required />
+                <input type="text" name="username" placeholder="Username" aria-label="username" required />
+                <input type="password" name="password" placeholder="Password" aria-label="password" required />
                 <button type="submit">Login</button>
             </form>
             <h3>Register</h3>
             <form id="registerForm" class="login-register">
-                <input type="text" name="username" placeholder="Username" required />
-                <input type="password" name="password" placeholder="Password" required />
+                <input type="text" name="username" placeholder="Username" aria-label="username" required />
+                <input type="password" name="password" placeholder="Password" aria-label="password" required />
                 <button type="submit">Register</button>
             </form>
         </section>

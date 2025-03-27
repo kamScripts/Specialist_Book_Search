@@ -1,23 +1,26 @@
 :root {
---nav-color: rgb(10, 9, 9);
---border-color: rgb(0, 0, 0);
---login-icon: rgb(2, 7, 158);
-
+    --nav-color: rgb(10, 9, 9);
+    --border-color: rgb(0, 0, 0);
+    --login-icon: rgb(2, 7, 158);
+    --menu-hover-color: rgb(36, 36, 36);
+    --form-background: #f9f9f9;
+    --button-bg: rgb(19, 73, 22);
+    --button-hover-bg: rgb(30, 116, 35);
+    --disabled-bg: #ccc;
+    --button-text-color: white;
 }
 
 body {
     max-width: 1200px;
     margin: 0 auto;
     padding: 10px;    
-    
-    
 }
+
 header {
     position: relative;    
     display: flex;
     flex-direction: column;
     align-items: center;
-
 }
 
 #user-info {
@@ -27,8 +30,8 @@ header {
     text-decoration: underline;
     font-size: 0.8rem;
     color: var(--login-icon);
-    
 }
+
 nav > ul {
     display: flex;
     justify-content: center;
@@ -36,9 +39,11 @@ nav > ul {
     list-style: none;
     padding: 0; 
 }
+
 nav > ul > li {
     margin-right: 15px;
     position: relative;
+    font-size: 1.2rem;
 }
 
 .menu::after {
@@ -48,23 +53,23 @@ nav > ul > li {
     left: 50%;  
     width: 0;  
     height: 2px;  
-    background-color: rgb(36, 36, 36);  
-    transition: width 0.5s ease, left 0.5s ease; /* Smooth transition for width and position */
+    background-color: var(--menu-hover-color);  
+    transition: width 0.5s ease, left 0.5s ease; 
 }
 
 .menu:hover::after {
     width: 100%;  
-    left: 0; /* Expand from center outward */
+    left: 0; 
 }
+
 a {
     color: var(--nav-color);
     font-weight: 600;
     text-decoration: none;
-    
 }
+
 #advanced-search-link {
-    
-    color: aliceblue;
+    color: var(--button-text-color);
 }
 
 #main-content {
@@ -72,17 +77,20 @@ a {
     flex-direction: column;
     align-items: center;
     width: 100%;
-
 }
 
 .active {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-
 }
+
 .inactive {
     display: none;
+}
+#basic-search {
+ flex-direction: row;
+ padding: 0 10px;
 }
 form {
     display: flex;
@@ -90,52 +98,70 @@ form {
     flex-wrap: wrap;
     gap: .5rem;
     padding: .5rem;
-    border: 2px solid #ccc;
+    border: 2px solid var(--border-color);
     border-radius: 8px;
-    background-color: #f9f9f9;    
+    background-color: var(--form-background);    
     margin: 0 auto;
 }
+
 button[type=submit] {
     align-self: center;
 }
+
 fieldset {
-    border: 1px solid #ccc;
+    border: 1px solid var(--border-color);
     border-radius: 8px;    
 }
+
 legend {
     font-size: 1.2rem;
     font-weight: bold;
     padding: 0 0.5rem;
 }
+
 label {
     display: flex;
     flex-direction: column;
     gap: 0.1rem;
     margin-bottom: 1rem;
 }
+
 input, select {
-    
-    border: 1px solid #ccc;
+    border: 1px solid var(--border-color);
     border-radius: 4px;
     font-size: 1rem;
-
+    max-width: 200px;
 }
+input[type=Number] {
+    max-width: 100px;
+}
+
 button {
     margin: 5px;
     padding: .2rem .4rem;
-    font-size: 1rem;
+    font-size: 1.1rem;
+    font-weight: 600;
     max-height: 2.5rem;
-    background-color: #357a37;
-    color: white;
+    background-color: var(--button-bg);
+    color: var(--button-text-color);
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    transition: background-color 0.5s ease;
+}
+
+button:disabled {
+    background-color: var(--disabled-bg);
+}
+
+button:disabled:hover {
+    background-color: var(--disabled-bg);
 }
 
 button:hover {
-    background-color: #45a049;
-}
+    background-color: var(--button-hover-bg);
 
+}
 
 section {
     display: flex;
@@ -147,20 +173,23 @@ section {
     margin: 0 auto;
     
 }
+
 article { 
-    width:100%; 
+    width: 100%; 
     max-width: 600px;
     position: relative;
     padding: 20px;
-    border-bottom: 2px solid ;
+    border-bottom: 2px solid var(--border-color);
     margin: 0 auto;
-
 }
+
 article > div {
     position: absolute;
-    top: 50%;
-    right:20px;
-    transform: translateY(-50%);
+    top: 20px;
+    right: 20px;
+    transform: translateY(50px);
+    display: flex;
+    flex-direction: column;
 }
 
 .skip {
@@ -171,19 +200,21 @@ article > div {
     height: 1px;
     overflow: hidden;
 }
+
 .skip:focus {
     position: static;
     width: auto;
     height: auto;
 }
+
 @media (max-width: 700px) {
    article {
     width: 80%;
     position: static;
-    
    } 
    article > div {
     position: static;
-    transform: none;  
-}
+    transform: none; 
+    flex-direction: row; 
+   }
 }

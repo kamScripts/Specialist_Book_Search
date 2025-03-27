@@ -67,7 +67,6 @@ class Logger {
         const users = JSON.parse(localStorage.getItem('users')) || {};
         const currentUser = localStorage.getItem('currentUser');
         const user = users[currentUser]
-        console.log(item ,user[listName])
         user[listName] = user[listName].filter((book) => {
             return book.title != item})
         localStorage.setItem('users', JSON.stringify(users))
@@ -86,6 +85,13 @@ class Logger {
         this.loadUserLists(currentUser);
 // Add method to check if book is on the list already
     }
+    isOnList(list, item) {
+        const users = JSON.parse(localStorage.getItem('users')) || {};
+        const currentUser = localStorage.getItem('currentUser');
+        const user = users[currentUser]
+        return user[list].some((book) => book.title === item)
+    }
+    
 
 };
 

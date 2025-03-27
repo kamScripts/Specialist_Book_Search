@@ -1,6 +1,6 @@
-import books from "./books.js";
+
 class Searcher {    
-    constructor() {
+    constructor(books) {
       this.books = books;
     };
     getBook(bookTitle) {   

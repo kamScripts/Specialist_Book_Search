@@ -1,6 +1,7 @@
 import Searcher from "./search.js"
 import Logger from "./login_register.js";
 import { buildBookFromArray }from "./displayContent.js";
+import books  from "./books.js";
 
 
 const browseLinks = document.querySelectorAll('.browse-links')
@@ -10,25 +11,22 @@ const readingListSection = document.getElementById('reading-list');
 const wishSection = document.getElementById('wish');
 // links opens given section based on the href value.
 const links = document.getElementsByClassName('link');
-const aSearchBtn = document.getElementById('advanced-search-link')
-const basicSearchForm = document.querySelector('.basic-search');
-const basicSearchBox = document.getElementById('search-box');
-const basicSearchBtn = document.getElementById('basic-search-btn');
-const searchForm = document.getElementById('advanced-search');
 
+
+const basicSearchForm = document.querySelector('#basic-search');
+const searchForm = document.getElementById('advanced-search');
 const registerForm = document.querySelector('#registerForm');
 const loginForm = document.querySelector('#loginForm');
 
 const userInfo = document.getElementById('user-info');
 const userSpan = document.getElementById('user-name');
 
-
-const searchEngine = new Searcher()
+const searchEngine = new Searcher(books)
 const logger = new Logger();
 
 const currentUser = localStorage.getItem('currentUser');
+console.log(currentUser)
 if (currentUser) {
-    console.log(currentUser)
     logger.loadUserLists(currentUser);
     userSpan.textContent = currentUser + ' (Log out)';
     userInfo.classList.remove('link')
@@ -58,40 +56,43 @@ const setActive = (open)=>{
     hideAllSections();
     showSection(open);
 }
+const disableBtnsIfOnList = () => {
 
+}
 
 const addToList = (button, list)=> {
-    const article = button.closest('article')       
-    button.disabled=true;
+    const article = button.closest('article') 
+    const book = searchEngine.getBook(article.id);
+    const isOnList = logger.isOnList(list, article.id);
+    if (!isOnList) {
+        logger.addBookToUserList(list, book);  
+    }else {
+        alert('Book is already on the List')
+    }            
     
-    if (list === wishSection) {
-        
-        logger.addBookToUserList('wishList', searchEngine.getBook(article.id));
-    }
-    if (list === readingListSection) {        
-        logger.addBookToUserList('readingList', searchEngine.getBook(article.id))
-    }
-    
-   
 };
 
-// add buttons to the search results.
-const selectResultBtn = () => {
-    document.querySelectorAll('.wish-btn').forEach(button => {
-        button.addEventListener('click', ()=>addToList(button, wishSection))
+// add buttons functionality to the search results.
+const addResultsBtns  = () => {
+    document.querySelectorAll('.wish-btn').forEach(button => {       
+        button.addEventListener('click', ()=>addToList(button, 'wishList'))
     })
     document.querySelectorAll('.read-btn').forEach(button => {
-        button.addEventListener('click', ()=>addToList(button, readingListSection))
+        button.addEventListener('click', ()=>addToList(button, 'readingList'))
     })
 };
-basicSearchBtn.addEventListener('click', (event) => {
+
+basicSearchForm.addEventListener('submit', (event) => {
     event.preventDefault();
-    searchResultSection.innerHTML = ''
-    setActive(searchResultSection);    
-    const value = basicSearchBox.value
-    buildBookFromArray(searchEngine.globalSearch(value), searchResultSection);
-    selectResultBtn()
-    basicSearchBox.value='';
+    searchResultSection.innerHTML = '';
+    setActive(searchResultSection);
+    const formData = new FormData(basicSearchForm);
+    const value = formData.get('searchBox')
+    const searchResults = searchEngine.globalSearch(value);
+    buildBookFromArray(searchResults, searchResultSection);
+    addResultsBtns()
+    basicSearchForm.reset()
+
 });
 
 searchForm.addEventListener('submit', (event) => {    
@@ -113,9 +114,27 @@ searchForm.addEventListener('submit', (event) => {
 // search books based on filters, display results and reset html form.
     const searchResults = searchEngine.advancedSearch(category, filters, rangeFilters);
     buildBookFromArray(searchResults, searchResultSection);
-    selectResultBtn();
+    addResultsBtns ();
     searchForm.reset()
 
+});
+registerForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const registerData = new FormData(registerForm);
+    const username = registerData.get('username')
+    const password = registerData.get('password');
+    logger.registerUser(username, password);
+    registerForm.reset();
+});
+
+loginForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const loginData = new FormData(loginForm)
+    const username = loginData.get('username');
+    const password = loginData.get('password');
+    logger.loginUser(username, password);
+    loginForm.reset()
+    location.reload()
 });
 //Add Event Listener to each link element
 for (const link of links) { 
@@ -133,30 +152,14 @@ for (const link of links) {
 for (const link of browseLinks) {
     link.addEventListener('click', (event)=>{        
         event.preventDefault(); 
-        browseFolder.innerHTML = '';    
-        buildBookFromArray(searchEngine.advancedSearch(link.getAttribute('data-href'), {}, {}), browseFolder);
-        selectResultBtn()
+        browseFolder.innerHTML = '';
+        const content = searchEngine.advancedSearch(link.getAttribute('data-href'), {}, {});  
+        buildBookFromArray(content, browseFolder);
+        addResultsBtns ()
     })
 }
 
-registerForm.addEventListener('submit', (event) => {
-    event.preventDefault();
-    const username = event.target.username.value;
-    const password = event.target.password.value;
-    logger.registerUser(username, password);
-    event.target.username.value = '';
-    event.target.password.value = '';
-});
 
-loginForm.addEventListener('submit', (event) => {
-    event.preventDefault();
-    const username = event.target.username.value;
-    const password = event.target.password.value;
-    logger.loginUser(username, password);
-    event.target.username.value = '';
-    event.target.password.value = '';
-    location.reload()
-});
 
 
 
