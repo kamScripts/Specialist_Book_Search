@@ -31,71 +31,71 @@
 
     <main id="main-content">
         <section id="search-section" class="inactive ">            
-<form id="advanced-search">                
-    <fieldset>
-        <legend>Category and Book Details</legend>
+            <form id="advanced-search">                
+                <fieldset>
+                    <legend>Category and Book Details</legend>
 
-        <label>
-            Genre:
-            <select name="genre" autofocus>
-                <option value="any">any</option>
-                <option value="fiction">Fiction</option>
-                <option value="non fiction">Non-Fiction</option>
-                <option value="mystery">Mystery</option>
-                <option value="fantasy">Fantasy</option>
-                <option value="biography">Biography</option>
-                <option value="science fiction">Science Fiction</option>
-                <option value="romance">Romance</option>                        
-            </select>
-        </label>
+                    <label>
+                        Genre:
+                        <select name="genre" autofocus>
+                            <option value="any">any</option>
+                            <option value="fiction">Fiction</option>
+                            <option value="non fiction">Non-Fiction</option>
+                            <option value="mystery">Mystery</option>
+                            <option value="fantasy">Fantasy</option>
+                            <option value="biography">Biography</option>
+                            <option value="science fiction">Science Fiction</option>
+                            <option value="romance">Romance</option>                        
+                        </select>
+                    </label>
 
-        <label>
-            Title:
-            <input type="text" name="title">
-        </label>    
+                    <label>
+                        Title:
+                        <input type="text" name="title">
+                    </label>    
 
-        <label>
-            Author:
-            <input type="text" name="author">
-        </label>
+                    <label>
+                        Author:
+                        <input type="text" name="author">
+                    </label>
 
-        <label>
-            Year of Publication:
-            <input type="number" name="publicationYear">
-        </label>
-    </fieldset>
+                    <label>
+                        Year of Publication:
+                        <input type="number" name="publicationYear">
+                    </label>
+                </fieldset>
 
-    <fieldset>
-        <legend>Book Format, Rating, and Length</legend>
+                <fieldset>
+                    <legend>Book Format, Rating, and Length</legend>
 
-        <label>
-            Book Format:
-            <select name="bookFormat">
-                <option value="any">any</option>
-                <option value="HardCover">Hardcover</option>
-                <option value="Paperback">Paperback</option>
-                <option value="Ebook">Ebook</option>
-            </select>
-        </label>
+                    <label>
+                        Book Format:
+                        <select name="bookFormat">
+                            <option value="any">any</option>
+                            <option value="HardCover">Hardcover</option>
+                            <option value="Paperback">Paperback</option>
+                            <option value="Ebook">Ebook</option>
+                        </select>
+                    </label>
 
-        <label>
-            Min Rating:
-            <input type="number" name="minRating" step="0.1" max="5">
-        </label>
+                    <label>
+                        Min Rating:
+                        <input type="number" name="minRating" step="0.1" max="5">
+                    </label>
 
-        <label>
-            Min Pages:
-            <input type="number" name="minPages">
-        </label>
+                    <label>
+                        Min Pages:
+                        <input type="number" name="minPages">
+                    </label>
 
-        <label>
-            Max Pages:
-            <input type="number" name="maxPages">
-        </label>
-    </fieldset>
+                    <label>
+                        Max Pages:
+                        <input type="number" name="maxPages">
+                    </label>
+                </fieldset>
 
-    <button type="submit">Search</button>
-</form>
+                <button type="submit">Search</button>
+            </form>
 
         </section>
         <section id="browse" class="active">
@@ -127,8 +127,8 @@
                 <input type="password" name="password" placeholder="Password" aria-label="password" required />
                 <button type="submit">Login</button>
             </form>
-            <h3>Register</h3>
-            <form id="registerForm" class="login-register">
+            <button id="register-btn">Register</button>
+            <form id="registerForm" class="login-register inactive">
                 <input type="text" name="username" placeholder="Username" aria-label="username" required />
                 <input type="password" name="password" placeholder="Password" aria-label="password" required />
                 <button type="submit">Register</button>

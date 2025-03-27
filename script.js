@@ -8,9 +8,7 @@ const browseLinks = document.querySelectorAll('.browse-links')
 const browseFolder = document.getElementById('browse-folder')
 const searchResultSection = document.getElementById('search-results');
 const searchOutput = document.querySelector('#search-results div');
-
 const readingListOutput = document.querySelector('#reading-list div');
-
 const wishOutput= document.querySelector('#wish div');
 // links opens given section based on the href value.
 const links = document.getElementsByClassName('link');
@@ -20,7 +18,7 @@ const basicSearchForm = document.querySelector('#basic-search');
 const searchForm = document.getElementById('advanced-search');
 const registerForm = document.querySelector('#registerForm');
 const loginForm = document.querySelector('#loginForm');
-
+const registerBtn = document.getElementById('register-btn')
 const userInfo = document.getElementById('user-info');
 const userSpan = document.getElementById('user-name');
 
@@ -41,7 +39,6 @@ if (currentUser) {
     
 }
 
-
 // SWitch visibility of HTML Sections
 const showSection = (section) => {
     section.className = 'active';
@@ -61,21 +58,25 @@ const setActive = (open)=>{
 }
 
 const addToList = (button, list)=> {
-    const article = button.closest('article') 
-    const book = searchEngine.getBook(article.id);
-    const isOnList = logger.isOnList(list, article.id);
-    if (!isOnList) {
-        logger.addBookToUserList(list, book);  
-    }else {
-        alert('Book is already on the List')
-    }            
+    if (currentUser) {
+        const article = button.closest('article') 
+        const book = searchEngine.getBook(article.id);
+        const isOnList = logger.isOnList(list, article.id);
+        if (!isOnList) {
+            logger.addBookToUserList(list, book);  
+        }else {
+            alert('Book is already on the List')
+        }
+    } else {
+        alert('Please log in to manage your lists.');
+    }
     
 };
 
 // add buttons functionality to the search results.
 const addResultsBtns  = () => {
     document.querySelectorAll('.wish-btn').forEach(button => {       
-        button.addEventListener('click', ()=>addToList(button, 'wishList'))
+        button.addEventListener('click', ()=>{addToList(button, 'wishList')})
     })
     document.querySelectorAll('.read-btn').forEach(button => {
         button.addEventListener('click', ()=>addToList(button, 'readingList'))
@@ -125,6 +126,7 @@ registerForm.addEventListener('submit', (event) => {
     const password = registerData.get('password');
     logger.registerUser(username, password);
     registerForm.reset();
+    registerForm.classList.toggle('inactive');
 });
 
 loginForm.addEventListener('submit', (event) => {
@@ -158,7 +160,7 @@ for (const link of browseLinks) {
         addResultsBtns ()
     })
 }
-
+registerBtn.addEventListener('click', () => registerForm.classList.toggle('inactive'))
 
 
 
