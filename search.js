@@ -63,7 +63,6 @@ class Searcher {
     
     advancedSearch(filterGenre, filters, rangeFilters){
         let results = []        
-        console.log(filterGenre, filters, rangeFilters)
         if (filterGenre != 'any') {            
             results = this.searchInCategory(filterGenre, filters);            
             results = this.searchByRange(rangeFilters, results);  

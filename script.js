@@ -7,8 +7,11 @@ import books  from "./books.js";
 const browseLinks = document.querySelectorAll('.browse-links')
 const browseFolder = document.getElementById('browse-folder')
 const searchResultSection = document.getElementById('search-results');
-const readingListSection = document.getElementById('reading-list');
-const wishSection = document.getElementById('wish');
+const searchOutput = document.querySelector('#search-results div');
+
+const readingListOutput = document.querySelector('#reading-list div');
+
+const wishOutput= document.querySelector('#wish div');
 // links opens given section based on the href value.
 const links = document.getElementsByClassName('link');
 
@@ -22,7 +25,7 @@ const userInfo = document.getElementById('user-info');
 const userSpan = document.getElementById('user-name');
 
 const searchEngine = new Searcher(books)
-const logger = new Logger(wishSection, readingListSection);
+const logger = new Logger(wishOutput, readingListOutput);
 
 const currentUser = localStorage.getItem('currentUser');
 console.log(currentUser)
@@ -81,12 +84,12 @@ const addResultsBtns  = () => {
 
 basicSearchForm.addEventListener('submit', (event) => {
     event.preventDefault();
-    searchResultSection.innerHTML = '';
+    searchOutput.innerHTML = '';
     setActive(searchResultSection);
     const formData = new FormData(basicSearchForm);
     const value = formData.get('searchBox')
     const searchResults = searchEngine.globalSearch(value);
-    buildBookFromArray(searchResults, searchResultSection);
+    buildBookFromArray(searchResults, searchOutput);
     addResultsBtns()
     basicSearchForm.reset()
 
@@ -94,7 +97,7 @@ basicSearchForm.addEventListener('submit', (event) => {
 
 searchForm.addEventListener('submit', (event) => {    
     event.preventDefault();
-    searchResultSection.innerHTML = ''
+    searchOutput.innerHTML = ''
     setActive(searchResultSection);
 // Access form data and extract inputs.
     const formData = new FormData(searchForm);
@@ -110,7 +113,7 @@ searchForm.addEventListener('submit', (event) => {
     );
 // search books based on filters, display results and reset html form.
     const searchResults = searchEngine.advancedSearch(category, filters, rangeFilters);
-    buildBookFromArray(searchResults, searchResultSection);
+    buildBookFromArray(searchResults, searchOutput);
     addResultsBtns ();
     searchForm.reset()
 

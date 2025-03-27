@@ -75,9 +75,10 @@ a {
 #main-content {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    width: 100%;
+    align-items: center;    
+    width: 100%;     
 }
+
 
 .active {
     display: flex;
@@ -90,7 +91,7 @@ a {
 }
 #basic-search {
  flex-direction: row;
- padding: 0 10px;
+ padding: 10px 10px;
 }
 form {
     display: flex;
@@ -136,31 +137,24 @@ input[type=Number] {
     max-width: 100px;
 }
 
+
 button {
     margin: 5px;
     padding: .2rem .4rem;
     font-size: 1.1rem;
-    font-weight: 600;
-    max-height: 2.5rem;
+    font-weight: 600;    
     background-color: var(--button-bg);
     color: var(--button-text-color);
     border: none;
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.5s ease;
+    
 }
 
-button:disabled {
-    background-color: var(--disabled-bg);
-}
-
-button:disabled:hover {
-    background-color: var(--disabled-bg);
-}
 
 button:hover {
     background-color: var(--button-hover-bg);
-
 }
 
 section {
@@ -181,13 +175,13 @@ article {
     padding: 20px;
     border-bottom: 2px solid var(--border-color);
     margin: 0 auto;
+    
 }
 
 article > div {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    transform: translateY(50px);
+    position: absolute;    
+    top: 80px;
+    right: 20px;    
     display: flex;
     flex-direction: column;
 }
@@ -213,8 +207,8 @@ article > div {
     position: static;
    } 
    article > div {
-    position: static;
-    transform: none; 
-    flex-direction: row; 
+    position: static;  
+    flex-direction: row;  
+    
    }
 }

@@ -23,10 +23,7 @@
             </ul>
         </nav>
         <form id="basic-search">
-            <label>
-                Search:
-                <input name="searchBox" id="search-box" type="search" placeholder="Title / Author / Genre " >
-            </label>           
+            <input name="searchBox" id="search-box" type="search" placeholder="Title / Author / Genre "  aria-label="Search by name, author or category">       
             <button type="submit" id="basic-search-btn" class="btns">search</button>            
         </form>
         <button><a class="link" href="#search-section" id="advanced-search-link">Advanced Search</a></button>
@@ -119,6 +116,7 @@
         </section>
         <section id="search-results" class="inactive">
             <h2>Search Result</h2>
+            <div></div>
         </section>
         <section id="login" class="inactive">
             <h2>Login / Register</h2>
@@ -138,13 +136,13 @@
         </section>
         <section id="reading-list" class="inactive">
             <h2>Reading List</h2>
+            <div></div>
         </section>
         <section id="wish" class="inactive">
             <h2>Wish List</h2>
-            
+            <div></div>
         </section>
     </main>
-
     <script type="module" src="script.js"></script>
 </body>
 </html>
