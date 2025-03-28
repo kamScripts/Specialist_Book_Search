@@ -10,7 +10,7 @@
     --button-text-color: white;
 }
 
-body {
+body {    
     max-width: 1200px;
     margin: 0 auto;
     padding: 10px;    
@@ -25,10 +25,9 @@ header {
 
 #user-info {
     position: absolute;
-    justify-self: flex-start;
-    align-self: flex-end;
-    text-decoration: underline;
-    font-size: 0.8rem;
+    top: 10px;
+    right:50px;    
+    text-decoration: underline;    
     color: var(--login-icon);
 }
 
@@ -37,13 +36,13 @@ nav > ul {
     justify-content: center;
     flex-wrap: wrap;
     list-style: none;
-    padding: 0; 
+    
 }
 
-nav > ul > li {
-    margin-right: 15px;
+nav > ul > li {    
     position: relative;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
+    margin: 10px;
 }
 
 .menu::after {
@@ -65,7 +64,7 @@ nav > ul > li {
 a {
     color: var(--nav-color);
     font-weight: 600;
-    text-decoration: none;
+    text-decoration: none;    
 }
 
 #advanced-search-link {
@@ -75,16 +74,16 @@ a {
 #main-content {
     display: flex;
     flex-direction: column;
-    align-items: center;    
-    width: 100%;     
+    align-items: center;
+    justify-content: center;    
+    width: 100%; 
+      
 }
 
 
 .active {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
+    }
 
 .inactive {
     display: none;
@@ -140,8 +139,8 @@ input[type=Number] {
 
 button {
     margin: 5px;
-    padding: .2rem .4rem;
-    font-size: 1.1rem;
+    padding: .4rem .4rem;
+    font-size: 1.2rem;
     font-weight: 600;    
     background-color: var(--button-bg);
     color: var(--button-text-color);
@@ -152,7 +151,13 @@ button {
     
 }
 
-
+button:disabled {
+    background-color: var(--disabled-bg);
+    cursor: not-allowed
+}
+button:disabled:hover {
+    background-color: var(--disabled-bg);
+}
 button:hover {
     background-color: var(--button-hover-bg);
 }
@@ -160,11 +165,11 @@ button:hover {
 section {
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
-    padding: 10px;
+    grid-template-columns: 1fr;      
     align-items: center;
     width: 100%;
-    margin: 0 auto;
+    height: 70vh;    
+    overflow-y: scroll;        
     
 }
 
@@ -180,10 +185,11 @@ article {
 
 article > div {
     position: absolute;    
-    top: 80px;
-    right: 20px;    
+    top: 50%;
+    right: 0;    
     display: flex;
     flex-direction: column;
+    transform: translateY(-50%);
 }
 
 .skip {
@@ -208,7 +214,29 @@ article > div {
    } 
    article > div {
     position: static;  
-    flex-direction: row;  
+    flex-direction: row;
+    transform: none;
+        
+   }   
+}
+@media (max-width: 500px) {
+    body {
+        margin: 0;
+        padding: 0;
+        font-size: 1rem;
+    }
+    .menu {        
+        font-size: 1rem;
+    }
+
+    button {        
+        font-size: 0.8rem;
+    }
+   nav > ul {    
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      
+      justify-content: space-around;
     
    }
 }

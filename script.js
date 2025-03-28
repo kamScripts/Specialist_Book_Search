@@ -57,30 +57,39 @@ const setActive = (open)=>{
     showSection(open);
 }
 
-const addToList = (button, list)=> {
-    if (currentUser) {
-        const article = button.closest('article') 
-        const book = searchEngine.getBook(article.id);
-        const isOnList = logger.isOnList(list, article.id);
-        if (!isOnList) {
-            logger.addBookToUserList(list, book);  
-        }else {
-            alert('Book is already on the List')
-        }
-    } else {
-        alert('Please log in to manage your lists.');
-    }
-    
+const addToList = (button, list, book, htmlList)=> {
+    logger.addBookToUserList(list, book);
+    button.textContent = `On the ${htmlList}`;   
+    button.disabled = true;
+     
 };
+const addBtns = (selector, list, htmlList) => {
+    console.log(selector)
+    document.querySelectorAll(selector).forEach(button => {
+        console.log(list) 
+        if (currentUser){
+            const article = button.closest('article') 
+            const book = searchEngine.getBook(article.id);
+            const isOnTheList= logger.isOnList(list, article.id);
+
+            if (!isOnTheList){
+                button.addEventListener('click', ()=>{addToList(button, list, book, htmlList)})                
+            }else {
+                button.textContent = `On the ${htmlList}`;
+                button.disabled = true;
+                
+            }            
+        }else {
+            button.addEventListener('click', ()=>{alert('Please log in to manage your lists.')}) 
+        }
+               
+    })
+}
 
 // add buttons functionality to the search results.
 const addResultsBtns  = () => {
-    document.querySelectorAll('.wish-btn').forEach(button => {       
-        button.addEventListener('click', ()=>{addToList(button, 'wishList')})
-    })
-    document.querySelectorAll('.read-btn').forEach(button => {
-        button.addEventListener('click', ()=>addToList(button, 'readingList'))
-    })
+    addBtns('.wish-btn', 'wishList', 'Wish List');
+    addBtns('.read-btn', 'readingList', 'Reading List');
 };
 
 basicSearchForm.addEventListener('submit', (event) => {
@@ -115,7 +124,7 @@ searchForm.addEventListener('submit', (event) => {
 // search books based on filters, display results and reset html form.
     const searchResults = searchEngine.advancedSearch(category, filters, rangeFilters);
     buildBookFromArray(searchResults, searchOutput);
-    addResultsBtns ();
+    addResultsBtns();
     searchForm.reset()
 
 });
@@ -157,7 +166,7 @@ for (const link of browseLinks) {
         browseFolder.innerHTML = '';
         const content = searchEngine.advancedSearch(link.getAttribute('data-href'), {}, {});  
         buildBookFromArray(content, browseFolder);
-        addResultsBtns ()
+        addResultsBtns()
     })
 }
 //switch registration form visibility
