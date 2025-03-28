@@ -160,6 +160,7 @@ for (const link of browseLinks) {
         addResultsBtns ()
     })
 }
+//switch registration form visibility
 registerBtn.addEventListener('click', () => registerForm.classList.toggle('inactive'))
 
 
