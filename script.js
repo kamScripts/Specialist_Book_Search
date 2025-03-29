@@ -3,9 +3,9 @@ import Logger from "./login_register.js";
 import { buildBookFromArray }from "./displayContent.js";
 import books  from "./books.js";
 
-
-const browseLinks = document.querySelectorAll('.browse-links')
-const browseFolder = document.getElementById('browse-folder')
+const main = document.getElementById('main-content');
+const browseLinks = document.querySelectorAll('.browse-links');
+const browseFolder = document.getElementById('browse-folder');
 const searchResultSection = document.getElementById('search-results');
 const searchOutput = document.querySelector('#search-results div');
 const readingListOutput = document.querySelector('#reading-list div');
@@ -20,7 +20,8 @@ const registerForm = document.querySelector('#registerForm');
 const loginForm = document.querySelector('#loginForm');
 const registerBtn = document.getElementById('register-btn')
 const userInfo = document.getElementById('user-info');
-const userSpan = document.getElementById('user-name');
+const userSpan = document.querySelectorAll('.user-name');
+const logStat = document.getElementById('log-stat');
 
 const searchEngine = new Searcher(books)
 const logger = new Logger(wishOutput, readingListOutput);
@@ -29,7 +30,11 @@ const currentUser = localStorage.getItem('currentUser');
 console.log(currentUser)
 if (currentUser) {
     logger.loadUserLists(currentUser);
-    userSpan.textContent = currentUser + ' (Log out)';
+    userSpan.forEach((span) => {
+        span.textContent = currentUser
+        span.style.fontWeight = '800';        
+    })
+    logStat.textContent = ' (Log out)';
     userInfo.classList.remove('link')
 
     userInfo.addEventListener('click', (event) => {
@@ -64,7 +69,6 @@ const addToList = (button, list, book, htmlList)=> {
      
 };
 const addBtns = (selector, list, htmlList) => {
-    console.log(selector)
     document.querySelectorAll(selector).forEach(button => {
         if (currentUser){
             const article = button.closest('article') 
@@ -75,8 +79,7 @@ const addBtns = (selector, list, htmlList) => {
                 button.addEventListener('click', ()=>{addToList(button, list, book, htmlList)})                
             }else {
                 button.textContent = `On the ${htmlList}`;
-                button.disabled = true;
-                
+                button.disabled = true;                
             }            
         }else {
             button.addEventListener('click', ()=>{alert('Please log in to manage your lists.')}) 

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Online Bookstore</title>
+    <title>Online Bookshel</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="favicon.ico">
     
@@ -13,7 +13,7 @@
 
     <header>
         <h1>Online BookShelf</h1>
-        <a id="user-info" class="link" href="#login"><span id="user-name">Log-in</span></a>
+        <a id="user-info" class="link" href="#login"><span class="user-name"></span><span id="log-stat"></span></a>
         <nav>            
             <ul id="top-nav">
                 <li><a class="menu link" href="#login">Log-in/register</a></li>
@@ -112,7 +112,18 @@
                     <li><button class='browse-links' data-href="romance">Romance</button></li>
             </ul>
             </nav>
-            <div id="browse-folder"></div>
+            <div id="browse-folder">
+                <p>
+                    Welcome, <span class="user-name"></span>, to the Online Bookshelf!
+                </p>
+                <p>
+                     Our extensive online book database using the search box above to find titles,
+                     authors, or categories that spark your interest.
+                     Looking for something more specific? Try our advanced search for tailored results.
+                     If you're unsure where to start, feel free to browse through our library—you might
+                      just discover your next great read!
+                </p>
+            </div>
         </section>
         <section id="search-results" class="inactive">
             <h2>Search Result</h2>
@@ -137,11 +148,17 @@
         </section>
         <section id="reading-list" class="inactive">
             <h2>Reading List</h2>
-            <div></div>
+            <div>
+                <p>Login or register to use reading list</p>
+                <a href="#login" class="link">Log in Page</a>
+            </div>
         </section>
         <section id="wish" class="inactive">
             <h2>Wish List</h2>
-            <div></div>
+            <div>
+                <p>Login or register to use wish list</p>
+                <a href="#login" class="link">Log in Page</a>
+            </div>
         </section>
     </main>
     <script type="module" src="script.js"></script>
