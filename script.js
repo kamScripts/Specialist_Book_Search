@@ -3,7 +3,7 @@ import Logger from "./login_register.js";
 import { buildBookFromArray }from "./displayContent.js";
 import books  from "./books.js";
 
-const main = document.getElementById('main-content');
+
 const browseLinks = document.querySelectorAll('.browse-links');
 const browseFolder = document.getElementById('browse-folder');
 const searchResultSection = document.getElementById('search-results');
@@ -152,9 +152,11 @@ loginForm.addEventListener('submit', (event) => {
 //Add Event Listener to each link element
 for (const link of links) { 
     link.addEventListener('click', (event) => {        
-        event.preventDefault();        
+        event.preventDefault();
+        const element = document.querySelector(`${link.getAttribute('href')}`)        
 // Make each section invisible before making selected visible.        
-        setActive(document.querySelector(`${link.getAttribute('href')}`))
+        setActive(element)
+        element.querySelector('div').scrollTop = 0;
         if (link.getAttribute('href')==='#search-section') {
             basicSearchForm.className = 'inactive'
         }
@@ -167,7 +169,8 @@ for (const link of browseLinks) {
         event.preventDefault(); 
         browseFolder.innerHTML = '';
         const content = searchEngine.advancedSearch(link.getAttribute('data-href'), {}, {});  
-        buildBookFromArray(content, browseFolder);
+        buildBookFromArray(content, browseFolder);  
+        browseFolder.scrollTop = 0;      
         addResultsBtns()
     })
 }

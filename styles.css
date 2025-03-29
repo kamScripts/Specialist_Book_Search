@@ -9,7 +9,9 @@
     --disabled-bg: #ccc;
     --button-text-color: white;
 }
-
+* {
+    box-sizing: border-box;
+}
 body {
     max-width: 1200px;
     margin: 0 auto;
@@ -182,21 +184,21 @@ section {
     max-width: 600px;
     width: 100%;
     height: 70vh;
+}
+section > div {
     overflow-y: scroll;
-
 }
 
 article {
     width: 100%;
-    max-width: 600px;
-    position: relative;
     
+    position: relative;
     border-bottom: 2px solid var(--border-color);
     margin: 0 auto;
 
 }
 
-article>div {
+article>div {    
     position: absolute;
     top: 50%;
     right: 0;
