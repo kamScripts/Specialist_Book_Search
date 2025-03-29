@@ -38,7 +38,7 @@ if (currentUser) {
     userInfo.classList.remove('link')
 
     userInfo.addEventListener('click', (event) => {
-        event.preventDefault();
+        event.preventDefault();        
         logger.logout()
   })
     
