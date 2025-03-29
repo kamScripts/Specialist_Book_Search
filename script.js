@@ -66,7 +66,6 @@ const addToList = (button, list, book, htmlList)=> {
 const addBtns = (selector, list, htmlList) => {
     console.log(selector)
     document.querySelectorAll(selector).forEach(button => {
-        console.log(list) 
         if (currentUser){
             const article = button.closest('article') 
             const book = searchEngine.getBook(article.id);

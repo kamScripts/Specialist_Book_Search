@@ -58,7 +58,7 @@ class Searcher {
                 }
                });           
          };
-        return results
+        return results.sort((a, b) => Math.round(b.averageReview * 100) - Math.round(a.averageReview * 100))
     };
     
     advancedSearch(filterGenre, filters, rangeFilters){
@@ -72,11 +72,11 @@ class Searcher {
             
            for (const genre in this.books){
             let temp = this.searchInCategory(genre, filters)
-            temp = this.searchByRange(rangeFilters, temp);  
+            temp = this.searchByRange(rangeFilters, temp);            
             temp.forEach(item => results.push(item))
            }
         }
-        return results
+        return results.sort((a, b) => Math.round(b.averageReview * 100) - Math.round(a.averageReview * 100))
     };
 
 };
