@@ -43,12 +43,15 @@ class Logger {
             this.wishSection.innerHTML = '';
             buildList(user.wishList, this.wishSection);
             this.addRemoveBtns('wishList');
-
-    }
+    }else {
+        this.wishSection.innerHTML = '<p> List is empty </p>'
+    };
         if (user.readingList.length >= 1){
             this.readingSection.innerHTML = '';
         buildList(user.readingList, this.readingSection);
         this.addRemoveBtns('readingList')
+    }else {
+        this.readingSection.innerHTML = '<p> List is empty </p>'
     };
     }
     addRemoveBtns(listName){

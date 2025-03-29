@@ -146,7 +146,7 @@ loginForm.addEventListener('submit', (event) => {
     const username = loginData.get('username');
     const password = loginData.get('password');
     logger.loginUser(username, password);
-    loginForm.reset()
+    loginForm.reset()    
     location.reload()
 });
 //Add Event Listener to each link element

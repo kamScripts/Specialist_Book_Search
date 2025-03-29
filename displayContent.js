@@ -22,7 +22,6 @@ function buildBookFromArray(array, parentElement){
     };
     
 function buildList(array, parentElement){ 
-    if (array.length >= 1){
         parentElement.innerHTML += array.map(
             ({ title, author, genre, bookFormat, pageCount, publicationYear,
                 averageReview, numberOfReviews, description
@@ -41,7 +40,7 @@ function buildList(array, parentElement){
                     </article>
                 `}
         ).join(''); 
-        }
-};
+        } 
+
 
 export { buildBookFromArray, buildList}
