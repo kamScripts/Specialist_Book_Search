@@ -156,11 +156,10 @@ for (const link of links) {
         const element = document.querySelector(`${link.getAttribute('href')}`)        
 // Make each section invisible before making selected visible.        
         setActive(element)
-        element.querySelector('div').scrollTop = 0;
         if (link.getAttribute('href')==='#search-section') {
             basicSearchForm.className = 'inactive'
         }
-
+        element.querySelector('div').scrollTop = 0;
     });
 }
 //build browse section
